@@ -10,10 +10,10 @@
   <div class="card-wrapper">
     <div class="tag-card" id="tagCard">
       <div class="tag-inner">
-        <div class="tag-front">
+        <div class="tag-face tag-front">
           <h2>✨ Revealing your Sentient Tag... ✨</h2>
         </div>
-        <div class="tag-back">
+        <div class="tag-face tag-back">
           <div class="shine"></div>
           <div class="tag-header">
             <h3>Sentient ID</h3>
@@ -34,17 +34,32 @@
     const username = params.get("username");
     const number = params.get("number");
     const rank = params.get("rank");
+    const tagCard = document.getElementById("tagCard");
 
     const usernameText = document.querySelector(".username-text");
     const numberText = document.querySelector(".number-text");
     const rankText = document.querySelector(".rank-text");
-    const tagCard = document.getElementById("tagCard");
+
+    // Assign colors based on rank
+    const rankColors = {
+      Newbie: "#ffb6f3",
+      Rookie: "#b366ff",
+      OG: "#00ffff",
+      Maxi: "#ff9933",
+      Chad: "#ffd700"
+    };
 
     if (username && number && rank) {
       usernameText.textContent = `👤 ${username}`;
       numberText.textContent = `🗨️ ${number} gsenti mentions`;
       rankText.textContent = `🚀 Sentient ${rank}`;
-      setTimeout(() => tagCard.classList.add("flipped"), 1000);
+      rankText.style.color = rankColors[rank] || "#fff";
+      rankText.style.textShadow = `0 0 15px ${rankColors[rank]}, 0 0 30px ${rankColors[rank]}`;
+
+      // Flip animation after a short delay
+      setTimeout(() => {
+        tagCard.classList.add("flipped");
+      }, 1000);
     } else {
       document.querySelector(".tag-front h2").textContent = "Invalid data — go back!";
     }
