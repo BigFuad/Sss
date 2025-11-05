@@ -14,43 +14,27 @@
       <input type="text" id="username" placeholder="Enter your Discord username..." />
       <button id="reveal-btn">Reveal Card</button>
     </div>
-
-    <div id="card" class="card hidden">
-      <p class="username-text"></p>
-      <p class="number-text"></p>
-      <p class="rank-text"></p>
-    </div>
   </div>
 
   <script>
-    const button = document.getElementById("reveal-btn");
-    const card = document.getElementById("card");
-    const usernameText = document.querySelector(".username-text");
-    const numberText = document.querySelector(".number-text");
-    const rankText = document.querySelector(".rank-text");
-
-    button.addEventListener("click", () => {
+    document.getElementById("reveal-btn").addEventListener("click", () => {
       const username = document.getElementById("username").value.trim();
       if (!username) {
         alert("Please enter your Discord username!");
         return;
       }
 
-      const number = Math.floor(Math.random() * 901) + 100; // 100 - 1000
+      const number = Math.floor(Math.random() * 901) + 100; // 100-1000
       let rank = "";
-
       if (number <= 200) rank = "Newbie";
       else if (number <= 400) rank = "Rookie";
       else if (number <= 600) rank = "OG";
       else if (number <= 800) rank = "Maxi";
       else rank = "Chad";
 
-      usernameText.textContent = `Hey ${username},`;
-      numberText.textContent = `You’ve said “gsenti” ${number} times!`;
-      rankText.textContent = `You are a Sentient ${rank} 💫`;
-
-      card.classList.remove("hidden");
-      card.classList.add("show");
+      // Redirect with query parameters
+      const params = new URLSearchParams({ username, number, rank });
+      window.location.href = `card.html?${params.toString()}`;
     });
   </script>
 </body>
