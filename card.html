@@ -7,18 +7,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="card-container">
-    <div class="card" id="card">
-      <div class="card-inner">
-        <div class="card-front">
-          <h2>Reveal Loading...</h2>
-        </div>
-        <div class="card-back">
-          <p class="username-text"></p>
-          <p class="number-text"></p>
-          <p class="rank-text"></p>
-          <a href="index.html" class="back-btn">Back</a>
-        </div>
+  <div class="card-wrapper">
+    <div class="card-inner" id="card">
+      <div class="card-face card-front">
+        <h2>✨ Revealing your card... ✨</h2>
+      </div>
+
+      <div class="card-face card-back">
+        <p class="username-text"></p>
+        <p class="number-text"></p>
+        <p class="rank-text"></p>
+        <a href="index.html" class="back-btn">Back</a>
       </div>
     </div>
   </div>
@@ -32,15 +31,20 @@
     const usernameText = document.querySelector(".username-text");
     const numberText = document.querySelector(".number-text");
     const rankText = document.querySelector(".rank-text");
+    const card = document.getElementById("card");
 
-    usernameText.textContent = `Hey ${username},`;
-    numberText.textContent = `You’ve said “gsenti” ${number} times!`;
-    rankText.textContent = `You are a Sentient ${rank} 💫`;
+    if (username && number && rank) {
+      usernameText.textContent = `Hey ${username},`;
+      numberText.textContent = `You’ve said “gsenti” ${number} times!`;
+      rankText.textContent = `You are a Sentient ${rank} 💫`;
 
-    // Add flip animation after short delay
-    setTimeout(() => {
-      document.getElementById("card").classList.add("flipped");
-    }, 600);
+      // Delay flip for effect
+      setTimeout(() => {
+        card.classList.add("flipped");
+      }, 1000);
+    } else {
+      document.querySelector(".card-front h2").textContent = "Invalid data — go back!";
+    }
   </script>
 </body>
 </html>
