@@ -16,6 +16,7 @@ body {
   color: #fff;
 }
 
+/* ========== Index Page ========== */
 .container {
   text-align: center;
 }
@@ -62,54 +63,49 @@ button:hover {
   box-shadow: 0 0 20px #ff99d9, 0 0 40px #ff66c4;
 }
 
-/* CARD PAGE */
-.card-container {
+/* ========== Card Page ========== */
+.card-wrapper {
   perspective: 1000px;
 }
 
-.card {
+.card-inner {
   width: 320px;
   height: 220px;
+  position: relative;
   transform-style: preserve-3d;
-  transition: transform 1s;
-  cursor: pointer;
+  transition: transform 1s ease;
 }
 
-.card.flipped {
+.card-inner.flipped {
   transform: rotateY(180deg);
 }
 
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.card-front, .card-back {
+.card-face {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 20px;
   backface-visibility: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 102, 196, 0.4);
   backdrop-filter: blur(10px);
   box-shadow: 0 0 20px rgba(255, 102, 196, 0.6);
+  padding: 1rem;
+  text-align: center;
 }
 
 .card-front h2 {
+  font-size: 1.4rem;
   color: #ffccf2;
   text-shadow: 0 0 15px #ff66c4;
 }
 
 .card-back {
   transform: rotateY(180deg);
-  text-align: center;
-  padding: 1rem;
 }
 
 .username-text {
