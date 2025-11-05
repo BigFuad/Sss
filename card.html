@@ -3,28 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Sentient Tag</title>
+  <title>Your Sentient Rank</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="card-wrapper">
-    <div class="tag-card" id="tagCard">
-      <div class="tag-inner">
-        <div class="tag-face tag-front">
-          <h2>✨ Revealing your Sentient Tag... ✨</h2>
-        </div>
-        <div class="tag-face tag-back">
-          <div class="shine"></div>
-          <div class="tag-header">
-            <h3>Sentient ID</h3>
-          </div>
-          <div class="tag-content">
-            <p class="username-text"></p>
-            <p class="number-text"></p>
-            <p class="rank-text"></p>
-          </div>
-          <a href="index.html" class="back-btn">Back</a>
-        </div>
+    <div class="card-inner" id="card">
+      <div class="card-face card-front">
+        <h2>✨ Revealing your card... ✨</h2>
+      </div>
+
+      <div class="card-face card-back">
+        <p class="username-text"></p>
+        <p class="number-text"></p>
+        <p class="rank-text"></p>
+        <a href="index.html" class="back-btn">Back</a>
       </div>
     </div>
   </div>
@@ -34,34 +27,23 @@
     const username = params.get("username");
     const number = params.get("number");
     const rank = params.get("rank");
-    const tagCard = document.getElementById("tagCard");
 
     const usernameText = document.querySelector(".username-text");
     const numberText = document.querySelector(".number-text");
     const rankText = document.querySelector(".rank-text");
-
-    // Assign colors based on rank
-    const rankColors = {
-      Newbie: "#ffb6f3",
-      Rookie: "#b366ff",
-      OG: "#00ffff",
-      Maxi: "#ff9933",
-      Chad: "#ffd700"
-    };
+    const card = document.getElementById("card");
 
     if (username && number && rank) {
-      usernameText.textContent = `👤 ${username}`;
-      numberText.textContent = `🗨️ ${number} gsenti mentions`;
-      rankText.textContent = `🚀 Sentient ${rank}`;
-      rankText.style.color = rankColors[rank] || "#fff";
-      rankText.style.textShadow = `0 0 15px ${rankColors[rank]}, 0 0 30px ${rankColors[rank]}`;
+      usernameText.textContent = `Hey ${username},`;
+      numberText.textContent = `You’ve said “gsenti” ${number} times!`;
+      rankText.textContent = `You are a Sentient ${rank} 💫`;
 
-      // Flip animation after a short delay
+      // Delay flip for effect
       setTimeout(() => {
-        tagCard.classList.add("flipped");
+        card.classList.add("flipped");
       }, 1000);
     } else {
-      document.querySelector(".tag-front h2").textContent = "Invalid data — go back!";
+      document.querySelector(".card-front h2").textContent = "Invalid data — go back!";
     }
   </script>
 </body>
