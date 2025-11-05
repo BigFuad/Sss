@@ -62,29 +62,54 @@ button:hover {
   box-shadow: 0 0 20px #ff99d9, 0 0 40px #ff66c4;
 }
 
+/* CARD PAGE */
+.card-container {
+  perspective: 1000px;
+}
+
 .card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 102, 196, 0.4);
+  width: 320px;
+  height: 220px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  cursor: pointer;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   border-radius: 20px;
-  padding: 2rem;
-  margin-top: 2rem;
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 102, 196, 0.4);
+  backdrop-filter: blur(10px);
   box-shadow: 0 0 20px rgba(255, 102, 196, 0.6);
-  opacity: 0;
-  transform: scale(0.9);
-  transition: all 0.4s ease;
 }
 
-.card.show {
-  opacity: 1;
-  transform: scale(1);
+.card-front h2 {
+  color: #ffccf2;
+  text-shadow: 0 0 15px #ff66c4;
 }
 
-.hidden {
-  display: none;
+.card-back {
+  transform: rotateY(180deg);
+  text-align: center;
+  padding: 1rem;
 }
 
 .username-text {
@@ -104,4 +129,20 @@ button:hover {
   font-weight: 700;
   color: #ffccf2;
   text-shadow: 0 0 20px #ff66c4;
+}
+
+.back-btn {
+  margin-top: 1rem;
+  background: linear-gradient(90deg, #ff66c4, #ff9ac9);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  box-shadow: 0 0 20px #ff66c4;
+  transform: scale(1.05);
 }
