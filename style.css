@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -13,10 +12,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Poppins', sans-serif;
   color: #fff;
 }
 
-/* ========== Index Page ========== */
+/* --- Index Page --- */
 .container {
   text-align: center;
 }
@@ -38,7 +38,7 @@ input {
   padding: 0.8rem 1.2rem;
   border-radius: 10px;
   border: none;
-  width: 250px;
+  width: 260px;
   font-size: 1rem;
   text-align: center;
   outline: none;
@@ -63,82 +63,144 @@ button:hover {
   box-shadow: 0 0 20px #ff99d9, 0 0 40px #ff66c4;
 }
 
-/* ========== Card Page ========== */
+/* --- Card Page --- */
 .card-wrapper {
   perspective: 1000px;
 }
 
-.card-inner {
-  width: 320px;
-  height: 220px;
-  position: relative;
+.tag-card {
+  width: 380px;
+  height: 180px;
   transform-style: preserve-3d;
   transition: transform 1s ease;
+  position: relative;
 }
 
-.card-inner.flipped {
+.tag-card.flipped {
   transform: rotateY(180deg);
 }
 
-.card-face {
+.tag-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.tag-front,
+.tag-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: 30px;
   backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Front side */
+.tag-front {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 102, 196, 0.5);
+  box-shadow: 0 0 30px rgba(255, 102, 196, 0.4);
+  text-align: center;
+  padding: 1rem;
+}
+
+.tag-front h2 {
+  font-size: 1.3rem;
+  color: #ffccf2;
+  text-shadow: 0 0 10px #ff66c4;
+}
+
+/* Back side (Tag design) */
+.tag-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #ff66c4 10%, #ff99cc 50%, #ffb6f3 100%);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 25px #ff66c4;
+  position: relative;
+}
+
+.tag-header {
+  background: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  text-align: center;
+  padding: 0.4rem 0;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tag-header h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+  letter-spacing: 1px;
+}
+
+.tag-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 102, 196, 0.4);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(255, 102, 196, 0.6);
-  padding: 1rem;
-  text-align: center;
-}
-
-.card-front h2 {
-  font-size: 1.4rem;
-  color: #ffccf2;
-  text-shadow: 0 0 15px #ff66c4;
-}
-
-.card-back {
-  transform: rotateY(180deg);
+  font-family: 'Poppins', sans-serif;
 }
 
 .username-text {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
 }
 
 .number-text {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 10px #ffb6f3;
+  font-size: 1rem;
+  margin: 4px 0;
+  text-shadow: 0 0 8px #fff;
 }
 
 .rank-text {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: #ffccf2;
-  text-shadow: 0 0 20px #ff66c4;
+  color: #fff;
+  text-shadow: 0 0 20px #ff33aa;
 }
 
 .back-btn {
-  margin-top: 1rem;
-  background: linear-gradient(90deg, #ff66c4, #ff9ac9);
-  color: #fff;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 0.9rem;
   text-decoration: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 20px;
-  font-weight: 600;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 10px;
   transition: 0.3s;
 }
 
 .back-btn:hover {
-  box-shadow: 0 0 20px #ff66c4;
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px #fff;
+}
+
+/* Shiny sweep animation */
+.shine {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+  transform: skewX(-25deg);
+  animation: shineMove 3s infinite;
+}
+
+@keyframes shineMove {
+  0% { left: -150%; }
+  50% { left: 150%; }
+  100% { left: 150%; }
 }
