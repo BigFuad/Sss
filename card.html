@@ -3,21 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Sentient Rank</title>
+  <title>Your Sentient Tag</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="card-wrapper">
-    <div class="card-inner" id="card">
-      <div class="card-face card-front">
-        <h2>✨ Revealing your card... ✨</h2>
-      </div>
-
-      <div class="card-face card-back">
-        <p class="username-text"></p>
-        <p class="number-text"></p>
-        <p class="rank-text"></p>
-        <a href="index.html" class="back-btn">Back</a>
+    <div class="tag-card" id="tagCard">
+      <div class="tag-inner">
+        <div class="tag-front">
+          <h2>✨ Revealing your Sentient Tag... ✨</h2>
+        </div>
+        <div class="tag-back">
+          <div class="shine"></div>
+          <div class="tag-header">
+            <h3>Sentient ID</h3>
+          </div>
+          <div class="tag-content">
+            <p class="username-text"></p>
+            <p class="number-text"></p>
+            <p class="rank-text"></p>
+          </div>
+          <a href="index.html" class="back-btn">Back</a>
+        </div>
       </div>
     </div>
   </div>
@@ -31,19 +38,15 @@
     const usernameText = document.querySelector(".username-text");
     const numberText = document.querySelector(".number-text");
     const rankText = document.querySelector(".rank-text");
-    const card = document.getElementById("card");
+    const tagCard = document.getElementById("tagCard");
 
     if (username && number && rank) {
-      usernameText.textContent = `Hey ${username},`;
-      numberText.textContent = `You’ve said “gsenti” ${number} times!`;
-      rankText.textContent = `You are a Sentient ${rank} 💫`;
-
-      // Delay flip for effect
-      setTimeout(() => {
-        card.classList.add("flipped");
-      }, 1000);
+      usernameText.textContent = `👤 ${username}`;
+      numberText.textContent = `🗨️ ${number} gsenti mentions`;
+      rankText.textContent = `🚀 Sentient ${rank}`;
+      setTimeout(() => tagCard.classList.add("flipped"), 1000);
     } else {
-      document.querySelector(".card-front h2").textContent = "Invalid data — go back!";
+      document.querySelector(".tag-front h2").textContent = "Invalid data — go back!";
     }
   </script>
 </body>
